@@ -7,7 +7,7 @@ function appendVideo(stream) {
     document.body.appendChild(video);
     video.play();
 }
-navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+navigator.mediaDevices.getUserMedia({video:true}).then(stream => {
     if(stream.getAudioTracks().length === 0) {
         // SkyWayのSFUにおいて、ビデオオンリーなストリームだとstreamが再生できないというバグがある。
         // バグ回避のため偽のオーディオトラックを追加する。
